@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — BuildBids</title>
+  <meta name="description" content="Privacy policy for BuildBids. Learn how we handle your saved bids, search preferences, and account information.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://buildbids.co/privacy.html">
+  <link rel="stylesheet" href="styles.css">
+  <script src="/build-ecosystem-bar.js" defer></script>
+  <script src="/build-ecosystem-auth.js" defer></script>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/" class="navbar-brand"><span class="brand-icon">📋</span> BuildBids</a>
+    <div class="navbar-links">
+      <a href="/#feed">Browse Bids</a>
+      <a href="/dashboard.html">Dashboard</a>
+      <a href="/about.html">About</a>
+      <a href="#" id="authNavBtn" onclick="if(window.BuildAuth)BuildAuth.showModal()" style="background:var(--gradient);color:#fff;border-radius:6px;">Sign In</a>
+    </div>
+  </nav>
+
+  <main style="max-width:720px;margin:3rem auto;padding:0 1.5rem;">
+    <h1 style="font-size:1.8rem;font-weight:800;color:var(--text-primary);margin-bottom:0.5rem;">Privacy Policy</h1>
+    <p style="color:var(--text-muted);font-size:13px;margin-bottom:2rem;">Last updated: June 8, 2026</p>
+
+    <h2 style="font-size:1.1rem;font-weight:700;color:var(--text-primary);margin-bottom:0.5rem;">1. What We Collect</h2>
+    <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">When you sign in, we collect the information provided by your authentication method (email address, display name, and profile photo) via <strong style="color:var(--text-primary);">Firebase Authentication</strong> (Google Cloud). When you use BuildBids, we store the following data in <strong style="color:var(--text-primary);">Cloud Firestore</strong>:</p>
+    <ul style="color:var(--text-secondary);line-height:2;margin-bottom:1.5rem;padding-left:1.5rem;">
+      <li><strong style="color:var(--text-primary);">Saved bids</strong> — bids you bookmark or track for later</li>
+      <li><strong style="color:var(--text-primary);">Search preferences</strong> — your saved filters (trades, states, bid sizes)</li>
+      <li><strong style="color:var(--text-primary);">Email for alerts</strong> — your email address for bid deadline alerts and daily digests</li>
+      <li><strong style="color:var(--text-primary);">Bid tracker data</strong> — application status, notes, and deadlines you set</li>
+    </ul>
+
+    <h2 style="font-size:1.1rem;font-weight:700;color:var(--text-primary);margin-bottom:0.5rem;">2. Bid Data Sources</h2>
+    <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">Bid listings displayed on BuildBids are aggregated from publicly available government procurement portals. AI-generated summaries are derived from these public documents. We do not collect or store proprietary bid response data — only the public solicitation information.</p>
+
+    <h2 style="font-size:1.1rem;font-weight:700;color:var(--text-primary);margin-bottom:0.5rem;">3. How We Use Your Data</h2>
+    <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:0.5rem;">Your data is used to:</p>
+    <ul style="color:var(--text-secondary);line-height:2;margin-bottom:1.5rem;padding-left:1.5rem;">
+      <li>Authenticate your account and secure your dashboard</li>
+      <li>Save your bid bookmarks and search preferences across sessions</li>
+      <li>Send bid deadline alerts and daily digest emails (if enabled)</li>
+      <li>Personalize bid recommendations based on your trade and location filters</li>
+    </ul>
+    <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">We do not sell, rent, or share your personal data with third parties for marketing purposes.</p>
+
+    <h2 style="font-size:1.1rem;font-weight:700;color:var(--text-primary);margin-bottom:0.5rem;">4. Third-Party Services</h2>
+    <ul style="color:var(--text-secondary);line-height:2;margin-bottom:1.5rem;padding-left:1.5rem;">
+      <li><strong style="color:var(--text-primary);">Firebase Authentication</strong> — account sign-in and session management (Google Cloud)</li>
+      <li><strong style="color:var(--text-primary);">Cloud Firestore</strong> — saved bids, search preferences, and tracker data (Google Cloud)</li>
+      <li><strong style="color:var(--text-primary);">Netlify</strong> — website hosting and CDN</li>
+    </ul>
+
+    <h2 style="font-size:1.1rem;font-weight:700;color:var(--text-primary);margin-bottom:0.5rem;">5. Cookies</h2>
+    <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">We use essential cookies and local storage for authentication state (Firebase Auth tokens). We do not use tracking cookies or analytics cookies.</p>
+
+    <h2 style="font-size:1.1rem;font-weight:700;color:var(--text-primary);margin-bottom:0.5rem;">6. Data Retention</h2>
+    <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">Your saved bids, preferences, and tracker data are retained as long as your account exists. You can delete individual saved bids and clear preferences at any time through the dashboard. If you wish to delete your account and all associated data, contact us at <a href="mailto:buildpdf.help@gmail.com" style="color:var(--accent);">buildpdf.help@gmail.com</a>.</p>
+
+    <h2 style="font-size:1.1rem;font-weight:700;color:var(--text-primary);margin-bottom:0.5rem;">7. Security</h2>
+    <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">All data is transmitted over HTTPS. Authentication is managed by Firebase Auth with industry-standard security practices. Firestore security rules ensure users can only access their own saved data.</p>
+
+    <h2 style="font-size:1.1rem;font-weight:700;color:var(--text-primary);margin-bottom:0.5rem;">8. Changes to This Policy</h2>
+    <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">We may update this policy from time to time. Changes will be reflected on this page with an updated date. Continued use of BuildBids after changes constitutes acceptance of the revised policy.</p>
+
+    <h2 style="font-size:1.1rem;font-weight:700;color:var(--text-primary);margin-bottom:0.5rem;">9. Contact</h2>
+    <p style="color:var(--text-secondary);line-height:1.8;">Questions about this policy? <a href="mailto:buildpdf.help@gmail.com" style="color:var(--accent);">buildpdf.help@gmail.com</a></p>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 BuildBids · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></p>
+  </footer>
+</body>
+</html>

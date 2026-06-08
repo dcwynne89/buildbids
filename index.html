@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BuildBids — Government Contract Opportunities for Small Contractors</title>
+  <meta name="description" content="Find and track government bids filtered by trade, location, and size. AI-powered plain-English summaries. Stop missing contracts — start winning them.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://buildbids.co/">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="BuildBids — Government Contract Opportunities for Small Contractors">
+  <meta property="og:description" content="Find and track government bids filtered by trade, location, and size. AI-powered plain-English summaries. Stop missing contracts — start winning them.">
+  <meta property="og:url" content="https://buildbids.co/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://buildbids.co/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="BuildBids — Government Contract Opportunities for Small Contractors">
+  <meta name="twitter:description" content="Find and track government bids filtered by trade, location, and size. AI-powered plain-English summaries.">
+  <meta name="twitter:image" content="https://buildbids.co/og-image.png">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "BuildBids",
+    "url": "https://buildbids.co",
+    "description": "Find and track government bids filtered by trade, location, and size. AI-powered plain-English summaries. Stop missing contracts — start winning them.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Free",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      {
+        "@type": "Offer",
+        "name": "Starter",
+        "price": "29",
+        "priceCurrency": "USD",
+        "billingIncrement": "P1M"
+      },
+      {
+        "@type": "Offer",
+        "name": "Pro",
+        "price": "49",
+        "priceCurrency": "USD",
+        "billingIncrement": "P1M"
+      }
+    ],
+    "creator": {
+      "@type": "Organization",
+      "name": "BuildBids",
+      "url": "https://buildbids.co"
+    }
+  }
+  </script>
+
+  <script src="/build-ecosystem-bar.js" defer></script>
+  <script src="/build-ecosystem-auth.js" defer></script>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav class="navbar">
+    <a href="/" class="navbar-brand"><span class="brand-icon">📋</span> BuildBids</a>
+    <div class="navbar-links">
+      <a href="#feed">Browse Bids</a>
+      <a href="/dashboard.html">Dashboard</a>
+      <a href="/about.html">About</a>
+      <a href="#" id="authNavBtn" onclick="if(window.BuildAuth)BuildAuth.showModal()" style="background:var(--gradient);color:#fff;border-radius:6px;">Sign In</a>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <h1>Stop Missing <span>Government Contracts</span></h1>
+    <p>Curated government bids for small contractors — filtered by trade, location, and size. AI-powered summaries in plain English so you know exactly what you're bidding on.</p>
+    <div class="hero-actions">
+      <a href="#feed" class="btn btn-primary">Browse Open Bids</a>
+      <a href="#pricing" class="btn btn-secondary">View Pricing</a>
+    </div>
+  </section>
+
+  <!-- ── Stats Bar ── -->
+  <div class="stats-bar">
+    <div class="stats-bar-inner">
+      <div class="stat-item"><strong>150+</strong>Active Bids</div>
+      <div class="stat-divider"></div>
+      <div class="stat-item"><strong>12</strong>States</div>
+      <div class="stat-divider"></div>
+      <div class="stat-item"><strong>Daily</strong>Updates</div>
+      <div class="stat-divider"></div>
+      <div class="stat-item"><strong>AI</strong>Powered Summaries</div>
+    </div>
+  </div>
+
+  <!-- ── Bid Feed ── -->
+  <section id="feed" style="padding-top:32px;">
+    <div class="section-header">
+      <h2>Open Bids</h2>
+      <p>Browse government contract opportunities curated for small contractors</p>
+    </div>
+    <div class="feed-layout">
+      <!-- Left: Filter sidebar -->
+      <aside class="filter-sidebar">
+        <div class="filter-section">
+          <h4>Trade</h4>
+          <label><input type="checkbox" value="general"> General</label>
+          <label><input type="checkbox" value="electrical"> Electrical</label>
+          <label><input type="checkbox" value="plumbing"> Plumbing</label>
+          <label><input type="checkbox" value="hvac"> HVAC</label>
+          <label><input type="checkbox" value="painting"> Painting</label>
+          <label><input type="checkbox" value="cleaning"> Cleaning / Janitorial</label>
+          <label><input type="checkbox" value="landscaping"> Landscaping</label>
+          <label><input type="checkbox" value="roofing"> Roofing</label>
+        </div>
+        <div class="filter-section">
+          <h4>State</h4>
+          <label><input type="checkbox" value="OR"> Oregon</label>
+          <label><input type="checkbox" value="WA"> Washington</label>
+          <label><input type="checkbox" value="CA"> California</label>
+          <label><input type="checkbox" value="TX"> Texas</label>
+          <label><input type="checkbox" value="FL"> Florida</label>
+        </div>
+        <div class="filter-section">
+          <h4>Bid Size</h4>
+          <label><input type="checkbox" value="under25k"> Under $25K</label>
+          <label><input type="checkbox" value="25k-100k"> $25K – $100K</label>
+          <label><input type="checkbox" value="100k-500k"> $100K – $500K</label>
+          <label><input type="checkbox" value="500k+"> $500K+</label>
+        </div>
+        <div class="filter-section">
+          <h4>Status</h4>
+          <label><input type="checkbox" value="open" checked> Open</label>
+          <label><input type="checkbox" value="closing-soon"> Closing Soon</label>
+        </div>
+        <button class="btn btn-secondary btn-sm" style="width:100%;" onclick="clearFilters()">Clear Filters</button>
+      </aside>
+
+      <!-- Right: Bid cards -->
+      <div>
+        <div class="search-bar">
+          <input type="text" class="search-input" placeholder="Search bids by keyword, agency, or trade..." id="searchInput">
+          <button class="btn btn-primary btn-sm" onclick="searchBids()">Search</button>
+        </div>
+        <div id="bidFeed">
+          <!-- Sample Bid 1 -->
+          <div class="bid-card" data-category="general">
+            <div class="bid-agency">Oregon Dept. of Administrative Services</div>
+            <div class="bid-title">Building Renovation — Salem State Office Complex Phase 2</div>
+            <div class="bid-meta">
+              <span>📍 Salem, OR</span>
+              <span>💰 $75K – $120K</span>
+              <span class="bid-deadline soon">⏰ Due Jun 22, 2026</span>
+            </div>
+            <p style="font-size:13px;color:var(--text-secondary);margin-bottom:10px;line-height:1.6;">Interior renovation of the 3rd floor east wing. Includes demolition of existing partition walls, new drywall, ceiling grid replacement, flooring, painting, and ADA-compliant restroom upgrades. Performance bond required.</p>
+            <div class="bid-bottom">
+              <div class="bid-tags">
+                <span class="bid-tag">General</span>
+                <span class="bid-tag">Renovation</span>
+                <span class="bid-tag">ADA</span>
+              </div>
+              <div class="fit-score">
+                <span>Fit</span>
+                <div class="score-bar"><div class="score-fill high" style="width:85%;"></div></div>
+                <span>85%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sample Bid 2 -->
+          <div class="bid-card" data-category="electrical">
+            <div class="bid-agency">City of Portland — Bureau of General Services</div>
+            <div class="bid-title">Electrical Panel Upgrades — Fire Station #7 & #14</div>
+            <div class="bid-meta">
+              <span>📍 Portland, OR</span>
+              <span>💰 $40K – $65K</span>
+              <span class="bid-deadline urgent">⏰ Due Jun 14, 2026</span>
+            </div>
+            <p style="font-size:13px;color:var(--text-secondary);margin-bottom:10px;line-height:1.6;">Replace aging 200-amp panels with 400-amp service at two fire stations. Includes new sub-panels, circuit mapping, and emergency generator transfer switch installation. Must hold C-10 electrical license.</p>
+            <div class="bid-bottom">
+              <div class="bid-tags">
+                <span class="bid-tag">Electrical</span>
+                <span class="bid-tag">Municipal</span>
+              </div>
+              <div class="fit-score">
+                <span>Fit</span>
+                <div class="score-bar"><div class="score-fill high" style="width:92%;"></div></div>
+                <span>92%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sample Bid 3 -->
+          <div class="bid-card" data-category="cleaning">
+            <div class="bid-agency">Washington State Dept. of Enterprise Services</div>
+            <div class="bid-title">Janitorial Services — Olympia Capitol Campus (3-Year Contract)</div>
+            <div class="bid-meta">
+              <span>📍 Olympia, WA</span>
+              <span>💰 $200K – $350K</span>
+              <span class="bid-deadline">⏰ Due Jul 8, 2026</span>
+            </div>
+            <p style="font-size:13px;color:var(--text-secondary);margin-bottom:10px;line-height:1.6;">Daily cleaning of 4 buildings on the Capitol campus, ~180,000 sq ft total. Includes restroom sanitation, floor care, window cleaning, and green cleaning product requirements. MWBE preference applies.</p>
+            <div class="bid-bottom">
+              <div class="bid-tags">
+                <span class="bid-tag">Cleaning</span>
+                <span class="bid-tag">Multi-Year</span>
+                <span class="bid-tag">MWBE</span>
+              </div>
+              <div class="fit-score">
+                <span>Fit</span>
+                <div class="score-bar"><div class="score-fill medium" style="width:68%;"></div></div>
+                <span>68%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sample Bid 4 -->
+          <div class="bid-card" data-category="hvac">
+            <div class="bid-agency">Multnomah County Facilities Division</div>
+            <div class="bid-title">HVAC Replacement — Multnomah County Library (Midland Branch)</div>
+            <div class="bid-meta">
+              <span>📍 Portland, OR</span>
+              <span>💰 $90K – $140K</span>
+              <span class="bid-deadline soon">⏰ Due Jun 28, 2026</span>
+            </div>
+            <p style="font-size:13px;color:var(--text-secondary);margin-bottom:10px;line-height:1.6;">Remove and replace 2 rooftop units (15-ton each), install new ductwork and thermostats. Prevailing wage applies. Pre-bid walkthrough required Jun 16 at 10 AM.</p>
+            <div class="bid-bottom">
+              <div class="bid-tags">
+                <span class="bid-tag">HVAC</span>
+                <span class="bid-tag">Prevailing Wage</span>
+              </div>
+              <div class="fit-score">
+                <span>Fit</span>
+                <div class="score-bar"><div class="score-fill medium" style="width:74%;"></div></div>
+                <span>74%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sample Bid 5 -->
+          <div class="bid-card" data-category="landscaping">
+            <div class="bid-agency">Texas General Land Office</div>
+            <div class="bid-title">Grounds Maintenance & Irrigation Repair — Austin Regional Office</div>
+            <div class="bid-meta">
+              <span>📍 Austin, TX</span>
+              <span>💰 $15K – $28K</span>
+              <span class="bid-deadline">⏰ Due Jul 15, 2026</span>
+            </div>
+            <p style="font-size:13px;color:var(--text-secondary);margin-bottom:10px;line-height:1.6;">Bi-weekly mowing, trimming, mulching, and seasonal planting on 2.5-acre campus. Includes repair of existing irrigation system (8 zones). HUB-certified firms encouraged.</p>
+            <div class="bid-bottom">
+              <div class="bid-tags">
+                <span class="bid-tag">Landscaping</span>
+                <span class="bid-tag">Irrigation</span>
+                <span class="bid-tag">HUB</span>
+              </div>
+              <div class="fit-score">
+                <span>Fit</span>
+                <div class="score-bar"><div class="score-fill high" style="width:88%;"></div></div>
+                <span>88%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sample Bid 6 -->
+          <div class="bid-card" data-category="roofing">
+            <div class="bid-agency">Florida Dept. of Management Services</div>
+            <div class="bid-title">Roof Replacement — Tallahassee Regional Service Center</div>
+            <div class="bid-meta">
+              <span>📍 Tallahassee, FL</span>
+              <span>💰 $180K – $260K</span>
+              <span class="bid-deadline">⏰ Due Jul 20, 2026</span>
+            </div>
+            <p style="font-size:13px;color:var(--text-secondary);margin-bottom:10px;line-height:1.6;">Full tear-off and replacement of ~22,000 sq ft flat roof with TPO membrane system. Includes new insulation, flashing, and drainage modifications. Florida-licensed roofing contractor required.</p>
+            <div class="bid-bottom">
+              <div class="bid-tags">
+                <span class="bid-tag">Roofing</span>
+                <span class="bid-tag">Commercial</span>
+              </div>
+              <div class="fit-score">
+                <span>Fit</span>
+                <div class="score-bar"><div class="score-fill low" style="width:45%;"></div></div>
+                <span>45%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── How It Works ── -->
+  <section class="features">
+    <h2>How It Works</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🔍</div>
+        <h3>Browse</h3>
+        <p>Filter by trade, state, and size. Find bids that match your skills.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📝</div>
+        <h3>Understand</h3>
+        <p>AI-generated plain English summaries. Key dates, requirements, and scope at a glance.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <h3>Win</h3>
+        <p>Track your applications, set deadline alerts, and submit with confidence.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Pricing ── -->
+  <section class="pricing" id="pricing">
+    <h2>Simple Pricing</h2>
+    <p>Start free. Upgrade when you're winning contracts.</p>
+    <div class="pricing-grid">
+      <!-- Free tier -->
+      <div class="pricing-card">
+        <div class="plan-name">Free</div>
+        <div class="plan-price">$0</div>
+        <ul>
+          <li>✓ Browse all open bids</li>
+          <li>✓ 3 AI summaries per day</li>
+          <li>✓ Basic search & filters</li>
+          <li class="disabled">✗ Email digest</li>
+          <li class="disabled">✗ Saved searches</li>
+          <li class="disabled">✗ Original bid PDFs</li>
+        </ul>
+      </div>
+      <!-- Starter tier -->
+      <div class="pricing-card featured">
+        <div class="plan-name">Starter</div>
+        <div class="plan-price">$29<span>/mo</span></div>
+        <ul>
+          <li>✓ Unlimited AI summaries</li>
+          <li>✓ Daily email digest</li>
+          <li>✓ 3 saved searches</li>
+          <li>✓ Bid deadline alerts</li>
+          <li class="disabled">✗ Original bid PDFs</li>
+          <li class="disabled">✗ Pre-qual checklists</li>
+        </ul>
+      </div>
+      <!-- Pro tier -->
+      <div class="pricing-card">
+        <div class="plan-name">Pro</div>
+        <div class="plan-price">$49<span>/mo</span></div>
+        <ul>
+          <li>✓ Everything in Starter</li>
+          <li>✓ Original bid PDFs</li>
+          <li>✓ Pre-qual checklists</li>
+          <li>✓ Bid tracker dashboard</li>
+          <li>✓ Unlimited saved searches</li>
+          <li>✓ Priority new-bid alerts</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer">
+    <div style="max-width:860px;margin:0 auto 1.25rem;padding:0 1.5rem;">
+      <p style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:0.6rem;">Also from the Build ecosystem</p>
+      <div style="display:flex;flex-wrap:wrap;gap:0.75rem;">
+        <a href="https://buildinvoice.co" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.35rem 0.85rem;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:6px;font-size:0.8rem;color:var(--text-secondary);text-decoration:none;">⚡ <strong style="color:var(--text-primary);">BuildInvoice</strong> — Free invoice generator</a>
+        <a href="https://buildcertificates.com" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.35rem 0.85rem;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:6px;font-size:0.8rem;color:var(--text-secondary);text-decoration:none;">🏅 <strong style="color:var(--text-primary);">BuildCertificates</strong> — Free certificate generator</a>
+        <a href="https://buildpdf.co" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.35rem 0.85rem;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:6px;font-size:0.8rem;color:var(--text-secondary);text-decoration:none;">📄 <strong style="color:var(--text-primary);">BuildPDF</strong> — Free file-to-PDF converter</a>
+        <a href="https://buildquotes.co" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.35rem 0.85rem;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:6px;font-size:0.8rem;color:var(--text-secondary);text-decoration:none;">💼 <strong style="color:var(--text-primary);">BuildQuotes</strong> — Free price quote generator</a>
+        <a href="https://buildtimesheet.co" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.35rem 0.85rem;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:6px;font-size:0.8rem;color:var(--text-secondary);text-decoration:none;">⏰ <strong style="color:var(--text-primary);">BuildTimesheet</strong> — Free timesheet generator</a>
+        <a href="https://buildstatus.co" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.35rem 0.85rem;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:6px;font-size:0.8rem;color:var(--text-secondary);text-decoration:none;">📊 <strong style="color:var(--text-primary);">BuildStatus</strong> — Project status pages</a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+    </div>
+    <p>© 2026 BuildBids</p>
+  </footer>
+
+  <!-- ── Toast ── -->
+  <div id="toast" class="toast"></div>
+
+</body>
+</html>

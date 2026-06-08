@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — BuildBids</title>
+  <meta name="description" content="Track your saved bids, applications, and outcomes. BuildBids subscriber dashboard.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://buildbids.co/dashboard.html">
+  <meta property="og:title" content="Dashboard — BuildBids">
+  <meta property="og:description" content="Track your saved bids, applications, and outcomes.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset & Base ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #0a0b10;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Nav ────────────────────────────────────────────────── */
+    .site-nav {
+      background: rgba(10,11,16,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 0 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+    .nav-brand {
+      font-size: 18px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.03em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-brand-icon {
+      width: 28px; height: 28px;
+      background: linear-gradient(135deg, #6C63FF, #3B82F6);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .nav-links a {
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.6);
+      transition: all 0.2s;
+    }
+    .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.06); }
+    .nav-links a.active { color: #fff; background: rgba(108,99,255,0.15); }
+
+    /* ── Dashboard Layout ──────────────────────────────────── */
+    .dashboard {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 32px 20px 80px;
+    }
+    .dash-header {
+      margin-bottom: 28px;
+    }
+    .dash-header h1 {
+      font-size: 24px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+    .dash-header p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* ── Auth Guard / Prompt ────────────────────────────────── */
+    .auth-prompt {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 20px;
+      text-align: center;
+    }
+    .auth-prompt-icon {
+      font-size: 56px;
+      margin-bottom: 20px;
+    }
+    .auth-prompt h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .auth-prompt p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 24px;
+      max-width: 400px;
+    }
+    .auth-prompt-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #6C63FF, #3B82F6);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+    .auth-prompt-btn:hover {
+      filter: brightness(1.1);
+      transform: translateY(-1px);
+    }
+    .auth-prompt-note {
+      margin-top: 12px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.25);
+    }
+
+    /* ── Tabs ───────────────────────────────────────────────── */
+    .dash-tabs {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding-bottom: 0;
+      overflow-x: auto;
+    }
+    .dash-tab {
+      padding: 10px 18px;
+      border-radius: 8px 8px 0 0;
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.45);
+      background: transparent;
+      border: none;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+    }
+    .dash-tab:hover {
+      color: rgba(255,255,255,0.7);
+      background: rgba(255,255,255,0.03);
+    }
+    .dash-tab.active {
+      color: #6C63FF;
+      border-bottom-color: #6C63FF;
+      background: rgba(108,99,255,0.06);
+    }
+
+    /* ── Bid Cards (shared styles with feed) ────────────────── */
+    .bid-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 12px;
+      transition: all 0.2s;
+    }
+    .bid-card:hover {
+      background: rgba(255,255,255,0.035);
+      border-color: rgba(255,255,255,0.1);
+    }
+    .bid-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .bid-card-header-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .bid-agency {
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .bid-status {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .bid-status-open {
+      background: rgba(16,185,129,0.1);
+      color: #10b981;
+    }
+    .bid-status-urgent {
+      background: rgba(239,68,68,0.1);
+      color: #ef4444;
+    }
+    .bid-status-warning {
+      background: rgba(245,158,11,0.1);
+      color: #f59e0b;
+    }
+    .bid-status-closed {
+      background: rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.3);
+    }
+    .bid-card-title {
+      display: block;
+      font-size: 16px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 8px;
+      line-height: 1.35;
+      transition: color 0.2s;
+    }
+    .bid-card-title:hover { color: #6C63FF; }
+    .bid-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+    .bid-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: 600;
+      background: rgba(108,99,255,0.08);
+      color: rgba(108,99,255,0.7);
+      border: 1px solid rgba(108,99,255,0.12);
+      text-transform: capitalize;
+    }
+    .bid-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 10px;
+    }
+    .meta-deadline { color: rgba(255,255,255,0.5); }
+    .deadline-urgent { color: #ef4444 !important; }
+    .deadline-warning { color: #f59e0b !important; }
+    .deadline-expired { color: rgba(255,255,255,0.25) !important; }
+    .bid-save-btn {
+      background: none;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 4px 10px;
+      font-size: 16px;
+      cursor: pointer;
+      color: rgba(255,255,255,0.3);
+      transition: all 0.2s;
+    }
+    .bid-save-btn:hover { color: #f59e0b; border-color: rgba(245,158,11,0.3); }
+    .bid-save-btn.saved { color: #f59e0b; border-color: rgba(245,158,11,0.3); }
+    .bid-fitscore {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .fitscore-label {
+      font-size: 11px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .fitscore-bar {
+      flex: 1;
+      height: 4px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .fitscore-fill {
+      height: 100%;
+      border-radius: 2px;
+      transition: width 0.6s ease;
+    }
+
+    /* ── Saved Search Alerts ────────────────────────────────── */
+    .alerts-section {
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .alerts-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .alerts-header h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.7);
+    }
+    .alerts-coming {
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(108,99,255,0.6);
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: rgba(108,99,255,0.08);
+      border: 1px solid rgba(108,99,255,0.12);
+    }
+    .alerts-placeholder {
+      background: rgba(255,255,255,0.02);
+      border: 1px dashed rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 28px;
+      text-align: center;
+      color: rgba(255,255,255,0.3);
+      font-size: 13px;
+    }
+    .alerts-placeholder p {
+      margin-top: 4px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.2);
+    }
+
+    /* ── Empty State ────────────────────────────────────────── */
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: rgba(255,255,255,0.4);
+    }
+    .empty-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+    .empty-state h3 {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.4);
+      max-width: 360px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ── Toast ──────────────────────────────────────────────── */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: inherit;
+      z-index: 9999;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      opacity: 0;
+      pointer-events: none;
+      background: #1a1b2e;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    }
+    .toast-show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+    .toast-success { border-color: rgba(16,185,129,0.3); }
+    .toast-info { border-color: rgba(108,99,255,0.3); }
+
+    /* ── Responsive ─────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .dash-header h1 { font-size: 20px; }
+      .bid-card { padding: 16px; }
+      .bid-meta { gap: 8px; }
+      .dash-tabs { gap: 0; }
+      .dash-tab { padding: 8px 12px; font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Ecosystem Bar -->
+  <script src="build-ecosystem-bar.js" defer></script>
+
+  <!-- Nav -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <div class="nav-brand-icon">📋</div>
+        BuildBids
+      </a>
+      <div class="nav-links" id="siteNav">
+        <a href="index.html">Bid Feed</a>
+        <a href="dashboard.html" class="active">Dashboard</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Auth Guard -->
+  <div class="auth-prompt" id="authPrompt" style="display:none">
+    <div class="auth-prompt-icon">🔐</div>
+    <h2>Sign in to access your dashboard</h2>
+    <p>Track saved bids, mark applications, and monitor your win rate — all in one place.</p>
+    <button class="auth-prompt-btn" onclick="if(window.BuildAuth)BuildAuth.showSignIn();else alert('Auth loading...')">
+      Sign In to Continue
+    </button>
+    <span class="auth-prompt-note">Free account — no credit card required</span>
+  </div>
+
+  <!-- Dashboard Content -->
+  <main class="dashboard" id="dashboardContent">
+    <div class="dash-header">
+      <h1>📊 Your Dashboard</h1>
+      <p>Track bids you've saved, applied to, and their outcomes.</p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="dash-tabs">
+      <button class="dash-tab active" data-tab="saved">⭐ Saved Bids</button>
+      <button class="dash-tab" data-tab="applied">📤 Applied</button>
+      <button class="dash-tab" data-tab="won">🏆 Won</button>
+      <button class="dash-tab" data-tab="lost">📊 Lost</button>
+    </div>
+
+    <!-- Bid List (populated by app.js) -->
+    <div id="dashBidList">
+      <div class="empty-state">
+        <div class="empty-icon">⏳</div>
+        <h3>Loading...</h3>
+      </div>
+    </div>
+
+    <!-- Saved Search Alerts (Placeholder) -->
+    <div class="alerts-section">
+      <div class="alerts-header">
+        <h3>🔔 Saved Search Alerts</h3>
+        <span class="alerts-coming">Coming Soon</span>
+      </div>
+      <div class="alerts-placeholder">
+        <span>Get notified when new bids match your criteria</span>
+        <p>Set up trade, state, and size filters to receive daily email alerts when matching bids are posted.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Scripts -->
+  <script src="app.js" defer></script>
+  <script src="build-ecosystem-auth.js" defer></script>
+</body>
+</html>

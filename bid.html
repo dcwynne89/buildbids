@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bid Details — BuildBids</title>
+  <meta name="description" content="View full bid details, AI-generated summary, requirements, and key dates. BuildBids — government bid discovery for contractors.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://buildbids.co/bid.html">
+  <meta property="og:title" content="Bid Details — BuildBids">
+  <meta property="og:description" content="View full bid details, AI-generated summary, requirements, and key dates.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset & Base ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #0a0b10;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Nav ────────────────────────────────────────────────── */
+    .site-nav {
+      background: rgba(10,11,16,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 0 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+    .nav-brand {
+      font-size: 18px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.03em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-brand-icon {
+      width: 28px; height: 28px;
+      background: linear-gradient(135deg, #6C63FF, #3B82F6);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .nav-links a {
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.6);
+      transition: all 0.2s;
+    }
+    .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.06); }
+    .nav-links a.active { color: #fff; background: rgba(108,99,255,0.15); }
+
+    /* ── Main ───────────────────────────────────────────────── */
+    .bid-detail {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 24px 20px 80px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 20px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: #6C63FF; }
+
+    /* ── Detail Header ──────────────────────────────────────── */
+    .detail-header {
+      margin-bottom: 24px;
+    }
+    .detail-header-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .bid-agency {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .detail-status {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .detail-status-open {
+      background: rgba(16,185,129,0.12);
+      color: #10b981;
+      border: 1px solid rgba(16,185,129,0.25);
+    }
+    .detail-status-urgent {
+      background: rgba(239,68,68,0.12);
+      color: #ef4444;
+      border: 1px solid rgba(239,68,68,0.25);
+    }
+    .detail-status-closed {
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.35);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .detail-title {
+      font-size: 26px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+    .detail-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 10px;
+    }
+    .detail-deadline {
+      margin-bottom: 12px;
+    }
+    .countdown {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .countdown-ok {
+      background: rgba(16,185,129,0.1);
+      color: #10b981;
+    }
+    .countdown-warning {
+      background: rgba(245,158,11,0.1);
+      color: #f59e0b;
+    }
+    .countdown-urgent {
+      background: rgba(239,68,68,0.12);
+      color: #ef4444;
+      animation: pulse 2s infinite;
+    }
+    .countdown-expired {
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.35);
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    .detail-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    .bid-tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      background: rgba(108,99,255,0.1);
+      color: rgba(108,99,255,0.8);
+      border: 1px solid rgba(108,99,255,0.15);
+      text-transform: capitalize;
+    }
+    .detail-bond {
+      font-size: 13px;
+      color: rgba(245,158,11,0.9);
+      padding: 6px 0;
+    }
+
+    /* ── Action Buttons ─────────────────────────────────────── */
+    .detail-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 28px;
+      align-items: center;
+    }
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 18px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.7);
+      font-size: 13px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .action-btn:hover {
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      border-color: rgba(255,255,255,0.18);
+    }
+    .action-btn.action-active {
+      background: rgba(108,99,255,0.12);
+      color: #6C63FF;
+      border-color: rgba(108,99,255,0.3);
+    }
+    .bid-outcome {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .bid-outcome-won {
+      background: rgba(16,185,129,0.12);
+      color: #10b981;
+      border: 1px solid rgba(16,185,129,0.25);
+    }
+    .bid-outcome-lost {
+      background: rgba(239,68,68,0.08);
+      color: rgba(239,68,68,0.7);
+      border: 1px solid rgba(239,68,68,0.15);
+    }
+
+    /* ── Summary Card ───────────────────────────────────────── */
+    .summary-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+    .summary-header {
+      margin-bottom: 24px;
+    }
+    .summary-badge {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      background: linear-gradient(135deg, rgba(108,99,255,0.15), rgba(59,130,246,0.15));
+      color: #818cf8;
+      border: 1px solid rgba(108,99,255,0.2);
+    }
+    .summary-section {
+      margin-bottom: 28px;
+    }
+    .summary-section:last-child { margin-bottom: 0; }
+    .summary-section-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+    .summary-text {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.75);
+    }
+
+    /* Timeline */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      padding-left: 8px;
+    }
+    .timeline-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      position: relative;
+      padding-bottom: 16px;
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 14px;
+      bottom: -2px;
+      width: 2px;
+      background: rgba(108,99,255,0.15);
+    }
+    .timeline-item:last-child::before { display: none; }
+    .timeline-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(108,99,255,0.3);
+      border: 2px solid #6C63FF;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .timeline-content {
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* Requirements */
+    .requirements-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .req-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .req-item:hover { color: rgba(255,255,255,0.9); }
+    .req-check {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(255,255,255,0.15);
+      border-radius: 4px;
+      background: transparent;
+      cursor: pointer;
+      flex-shrink: 0;
+      margin-top: 2px;
+      transition: all 0.2s;
+      position: relative;
+    }
+    .req-check:checked {
+      background: #6C63FF;
+      border-color: #6C63FF;
+    }
+    .req-check:checked::after {
+      content: '✓';
+      position: absolute;
+      top: -1px;
+      left: 2px;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* Fit Score */
+    .detail-fitscore {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .fitscore-number {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .fitscore-of {
+      font-size: 16px;
+      font-weight: 500;
+      opacity: 0.5;
+    }
+    .fitscore-label {
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .fitscore-bar {
+      height: 6px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 3px;
+      flex: 1;
+      overflow: hidden;
+    }
+    .fitscore-bar-lg {
+      height: 8px;
+      border-radius: 4px;
+    }
+    .fitscore-fill {
+      height: 100%;
+      border-radius: inherit;
+      transition: width 0.6s ease;
+    }
+
+    /* ── Source Link Card ────────────────────────────────────── */
+    .source-link-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 18px 22px;
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .source-link {
+      font-size: 15px;
+      font-weight: 700;
+      color: #6C63FF;
+      transition: color 0.2s;
+    }
+    .source-link:hover { color: #818cf8; }
+    .source-url {
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+      word-break: break-all;
+    }
+
+    /* ── Outcome Section ────────────────────────────────────── */
+    .outcome-section {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 22px;
+      margin-bottom: 32px;
+    }
+    .outcome-btns {
+      display: flex;
+      gap: 10px;
+    }
+    .outcome-btn {
+      padding: 10px 22px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.03);
+      color: rgba(255,255,255,0.6);
+      font-size: 13px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .outcome-btn:hover { border-color: rgba(255,255,255,0.2); color: #fff; }
+    .outcome-won.active {
+      background: rgba(16,185,129,0.12);
+      color: #10b981;
+      border-color: rgba(16,185,129,0.3);
+    }
+    .outcome-lost.active {
+      background: rgba(239,68,68,0.08);
+      color: #ef4444;
+      border-color: rgba(239,68,68,0.2);
+    }
+
+    /* ── Related Bids ───────────────────────────────────────── */
+    .related-section {
+      margin-top: 8px;
+    }
+    .related-grid {
+      display: grid;
+      gap: 12px;
+    }
+    .related-card {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 16px 20px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      transition: all 0.2s;
+    }
+    .related-card:hover {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(108,99,255,0.2);
+    }
+    .related-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.85);
+    }
+    .related-meta {
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      display: flex;
+      gap: 12px;
+    }
+
+    /* ── Empty State ────────────────────────────────────────── */
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: rgba(255,255,255,0.4);
+    }
+    .empty-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+    .empty-state h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 8px;
+    }
+    .empty-state p {
+      font-size: 13px;
+    }
+
+    /* ── Toast ──────────────────────────────────────────────── */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: inherit;
+      z-index: 9999;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      opacity: 0;
+      pointer-events: none;
+      background: #1a1b2e;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    }
+    .toast-show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+    .toast-success { border-color: rgba(16,185,129,0.3); }
+    .toast-info { border-color: rgba(108,99,255,0.3); }
+
+    /* Deadline color helpers */
+    .deadline-urgent { color: #ef4444; }
+    .deadline-warning { color: #f59e0b; }
+
+    /* ── Responsive ─────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .detail-title { font-size: 20px; }
+      .detail-meta { gap: 8px; font-size: 12px; }
+      .summary-card { padding: 20px; }
+      .detail-fitscore { flex-wrap: wrap; }
+      .fitscore-bar { width: 100%; }
+      .detail-actions { flex-direction: column; }
+      .action-btn { width: 100%; justify-content: center; }
+      .outcome-btns { flex-direction: column; }
+      .outcome-btn { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Ecosystem Bar -->
+  <script src="build-ecosystem-bar.js" defer></script>
+
+  <!-- Nav -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <div class="nav-brand-icon">📋</div>
+        BuildBids
+      </a>
+      <div class="nav-links" id="siteNav">
+        <a href="index.html">Bid Feed</a>
+        <a href="dashboard.html">Dashboard</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="bid-detail" style="padding:24px 20px;">
+    <a href="index.html" class="back-link">← Back to Bid Feed</a>
+    <div id="bidDetail">
+      <!-- Populated by bid-detail.js -->
+      <div class="empty-state" style="margin-top:60px">
+        <div class="empty-icon">⏳</div>
+        <h3>Loading bid details...</h3>
+      </div>
+    </div>
+  </main>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Scripts -->
+  <script src="app.js" defer></script>
+  <script src="bid-detail.js" defer></script>
+  <script src="build-ecosystem-auth.js" defer></script>
+</body>
+</html>

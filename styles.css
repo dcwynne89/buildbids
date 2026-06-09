@@ -1,11 +1,11 @@
-/* ============================================================
-   BuildBids — Design System
-   Teal / Emerald accent · Dark theme
+﻿/* ============================================================
+   BuildBids â€” Design System
+   Teal / Emerald accent Â· Dark theme
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
-/* ── Tokens ──────────────────────────────────────────────── */
+/* â”€â”€ Tokens â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 :root {
   --bg: #070a0f;
   --bg-card: #0c1017;
@@ -28,7 +28,7 @@
   --gradient: linear-gradient(135deg, #0d9488, #14b8a6);
 }
 
-/* ── Reset ───────────────────────────────────────────────── */
+/* â”€â”€ Reset â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
@@ -45,7 +45,7 @@ a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
 a:hover { color: var(--accent-hover); }
 img { max-width: 100%; height: auto; }
 
-/* ── Navbar ──────────────────────────────────────────────── */
+/* â”€â”€ Navbar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .navbar {
   display: flex;
   align-items: center;
@@ -96,7 +96,7 @@ img { max-width: 100%; height: auto; }
   background: var(--accent-glow);
 }
 
-/* ── Buttons ─────────────────────────────────────────────── */
+/* â”€â”€ Buttons â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -158,7 +158,7 @@ img { max-width: 100%; height: auto; }
   font-size: 16px;
 }
 
-/* ── Cards ───────────────────────────────────────────────── */
+/* â”€â”€ Cards â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .card {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -185,7 +185,7 @@ img { max-width: 100%; height: auto; }
   color: var(--text-primary);
 }
 
-/* ── Form Elements ───────────────────────────────────────── */
+/* â”€â”€ Form Elements â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .form-group {
   margin-bottom: 16px;
 }
@@ -232,7 +232,7 @@ img { max-width: 100%; height: auto; }
   gap: 12px;
 }
 
-/* ── Badges ──────────────────────────────────────────────── */
+/* â”€â”€ Badges â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -259,7 +259,7 @@ img { max-width: 100%; height: auto; }
   color: #3b82f6;
 }
 
-/* ── Toast ───────────────────────────────────────────────── */
+/* â”€â”€ Toast â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .toast {
   position: fixed;
   bottom: 24px;
@@ -286,7 +286,7 @@ img { max-width: 100%; height: auto; }
 .toast--success { border-left: 3px solid var(--success); }
 .toast--error   { border-left: 3px solid var(--danger); }
 
-/* ── Hero (Landing Page) ─────────────────────────────────── */
+/* â”€â”€ Hero (Landing Page) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .hero {
   text-align: center;
   padding: 80px 20px 60px;
@@ -329,7 +329,7 @@ img { max-width: 100%; height: auto; }
 
 .hero-actions .btn { padding: 14px 28px; font-size: 15px; }
 
-/* ── Stats Bar ───────────────────────────────────────────── */
+/* â”€â”€ Stats Bar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .stats-bar {
   background: var(--gradient);
   padding: 20px 24px;
@@ -366,7 +366,7 @@ img { max-width: 100%; height: auto; }
   background: rgba(255,255,255,0.3);
 }
 
-/* ── Feature Cards ───────────────────────────────────────── */
+/* â”€â”€ Feature Cards â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .features {
   max-width: 960px;
   margin: 0 auto;
@@ -417,7 +417,7 @@ img { max-width: 100%; height: auto; }
   line-height: 1.5;
 }
 
-/* ── Pricing ─────────────────────────────────────────────── */
+/* â”€â”€ Pricing â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .pricing {
   max-width: 960px;
   margin: 0 auto;
@@ -492,7 +492,7 @@ img { max-width: 100%; height: auto; }
   color: var(--text-muted);
 }
 
-/* ── Modal ───────────────────────────────────────────────── */
+/* â”€â”€ Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .modal-overlay {
   display: none;
   position: fixed;
@@ -531,7 +531,7 @@ img { max-width: 100%; height: auto; }
   margin-top: 20px;
 }
 
-/* ── Footer ──────────────────────────────────────────────── */
+/* â”€â”€ Footer â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .site-footer {
   border-top: 1px solid var(--border);
   padding: 40px 20px;
@@ -551,11 +551,11 @@ img { max-width: 100%; height: auto; }
   flex-wrap: wrap;
 }
 
-/* ═══════════════════════════════════════════════════════════
-   BUILDBIDS — App-Specific Styles
-   ═══════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   BUILDBIDS â€” App-Specific Styles
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
-/* ── Feed Layout ─────────────────────────────────────────── */
+/* â”€â”€ Feed Layout â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .feed-layout {
   display: grid;
   grid-template-columns: 240px 1fr;
@@ -565,7 +565,7 @@ img { max-width: 100%; height: auto; }
   padding: 24px 20px;
 }
 
-/* ── Search Bar ──────────────────────────────────────────── */
+/* â”€â”€ Search Bar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .search-bar {
   display: flex;
   gap: 8px;
@@ -594,7 +594,7 @@ img { max-width: 100%; height: auto; }
   color: var(--text-muted);
 }
 
-/* ── Filter Sidebar ──────────────────────────────────────── */
+/* â”€â”€ Filter Sidebar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .filter-sidebar {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -644,7 +644,7 @@ img { max-width: 100%; height: auto; }
   cursor: pointer;
 }
 
-/* ── Bid Card ────────────────────────────────────────────── */
+/* â”€â”€ Bid Card â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .bid-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -727,7 +727,7 @@ img { max-width: 100%; height: auto; }
   margin-top: 10px;
 }
 
-/* ── Category Border Colors ──────────────────────────────── */
+/* â”€â”€ Category Border Colors â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .bid-card[data-category="electrical"]  { border-left-color: #f59e0b; }
 .bid-card[data-category="plumbing"]    { border-left-color: #3b82f6; }
 .bid-card[data-category="hvac"]        { border-left-color: #8b5cf6; }
@@ -737,7 +737,7 @@ img { max-width: 100%; height: auto; }
 .bid-card[data-category="roofing"]     { border-left-color: #f97316; }
 .bid-card[data-category="general"]     { border-left-color: var(--accent); }
 
-/* ── Fit Score ───────────────────────────────────────────── */
+/* â”€â”€ Fit Score â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .fit-score {
   display: inline-flex;
   align-items: center;
@@ -764,7 +764,7 @@ img { max-width: 100%; height: auto; }
 .fit-score .score-fill.medium { background: var(--warning); }
 .fit-score .score-fill.low    { background: var(--danger); }
 
-/* ── Bid Detail ──────────────────────────────────────────── */
+/* â”€â”€ Bid Detail â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .bid-detail {
   max-width: 720px;
   margin: 0 auto;
@@ -817,13 +817,13 @@ img { max-width: 100%; height: auto; }
 }
 
 .requirements-list li::before {
-  content: '✓';
+  content: 'âœ“';
   color: var(--accent);
   margin-right: 8px;
   font-weight: 700;
 }
 
-/* ── Section Header ──────────────────────────────────────── */
+/* â”€â”€ Section Header â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .section-header {
   text-align: center;
   max-width: 640px;
@@ -841,7 +841,23 @@ img { max-width: 100%; height: auto; }
   font-size: 15px;
 }
 
-/* ── Responsive ──────────────────────────────────────────── */
+/* â”€â”€ SAM.gov Source Link â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.bid-source-link {
+  display: block;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  transition: color 0.2s;
+}
+
+.bid-source-link:hover {
+  color: var(--accent-hover);
+}
+
+/* â”€â”€ Responsive â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @media (max-width: 768px) {
   .hero h1 { font-size: 30px; }
   .hero p { font-size: 15px; }
@@ -866,3 +882,4 @@ img { max-width: 100%; height: auto; }
   .stats-bar-inner { flex-direction: column; gap: 12px; }
   .bid-card .bid-meta { flex-direction: column; gap: 4px; }
 }
+

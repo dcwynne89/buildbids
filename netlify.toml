@@ -1,6 +1,16 @@
 # ── BuildBids · netlify.toml ──────────────────────────────────────────────────
 # Canonical: https://buildbids.co
 
+[functions]
+  directory = "netlify/functions"
+
+# ── Clean API Routes ─────────────────────────────────────────────────────────
+[[redirects]]
+  from   = "/api/sam-proxy"
+  to     = "/.netlify/functions/sam-proxy"
+  status = 200
+  force  = true
+
 # ── Bot Blocking (404 — give bots nothing) ────────────────────────────────────
 [[redirects]]
   from   = "/wp-admin/*"
@@ -69,7 +79,7 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy        = "strict-origin-when-cross-origin"
     Permissions-Policy     = "camera=(self), microphone=(), geolocation=()"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.gstatic.com https://apis.google.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://*.r2.dev https://*.cloudflarestorage.com; connect-src 'self' https://firestore.googleapis.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://*.r2.dev https://*.cloudflarestorage.com; frame-src https://accounts.google.com https://*.firebaseapp.com; frame-ancestors 'self' https://vital-plating-422300-u2.web.app https://gigledger.co"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.gstatic.com https://apis.google.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://*.r2.dev https://*.cloudflarestorage.com; connect-src 'self' https://firestore.googleapis.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://*.r2.dev https://*.cloudflarestorage.com https://api.sam.gov; frame-src https://accounts.google.com https://*.firebaseapp.com; frame-ancestors 'self' https://vital-plating-422300-u2.web.app https://gigledger.co"
 
 # ── CORS ──────────────────────────────────────────────────────────────────────
 [[headers]]

@@ -7,22 +7,17 @@
   <meta name="description" content="Find and track government bids filtered by trade, location, and size. AI-powered plain-English summaries. Stop missing contracts — start winning them.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://buildbids.co/">
-  <link rel="stylesheet" href="styles.css">
 
   <!-- Open Graph -->
   <meta property="og:title" content="BuildBids — Government Contract Opportunities for Small Contractors">
-  <meta property="og:description" content="Find and track government bids filtered by trade, location, and size. AI-powered plain-English summaries. Stop missing contracts — start winning them.">
+  <meta property="og:description" content="Find and track government bids filtered by trade, location, and size. AI-powered plain-English summaries.">
   <meta property="og:url" content="https://buildbids.co/">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://buildbids.co/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="BuildBids — Government Contract Opportunities for Small Contractors">
-  <meta name="twitter:description" content="Find and track government bids filtered by trade, location, and size. AI-powered plain-English summaries.">
-  <meta name="twitter:image" content="https://buildbids.co/og-image.png">
+  <meta name="twitter:description" content="Curated government bids for contractors. AI summaries. Filter by trade, state, size.">
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -31,366 +26,863 @@
     "@type": "WebApplication",
     "name": "BuildBids",
     "url": "https://buildbids.co",
-    "description": "Find and track government bids filtered by trade, location, and size. AI-powered plain-English summaries. Stop missing contracts — start winning them.",
-    "applicationCategory": "BusinessApplication",
-    "operatingSystem": "Web",
-    "offers": [
-      {
-        "@type": "Offer",
-        "name": "Free",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      {
-        "@type": "Offer",
-        "name": "Starter",
-        "price": "29",
-        "priceCurrency": "USD",
-        "billingIncrement": "P1M"
-      },
-      {
-        "@type": "Offer",
-        "name": "Pro",
-        "price": "49",
-        "priceCurrency": "USD",
-        "billingIncrement": "P1M"
-      }
-    ],
-    "creator": {
-      "@type": "Organization",
-      "name": "BuildBids",
-      "url": "https://buildbids.co"
-    }
+    "description": "Government contract bid discovery for small contractors with AI-powered summaries.",
+    "applicationCategory": "BusinessApplication"
   }
   </script>
 
-  <script src="/build-ecosystem-bar.js" defer></script>
-  <script src="/build-ecosystem-auth.js" defer></script>
-  <script src="/app.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Reset & Base ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #080b12;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Nav ─────────────────────────────────────────────────── */
+    .site-nav {
+      background: rgba(8,11,18,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 0 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 58px;
+    }
+    .nav-brand {
+      font-size: 18px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.03em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-brand-icon {
+      width: 30px; height: 30px;
+      background: linear-gradient(135deg, #0d9488, #0f766e);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px;
+    }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a {
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.55);
+      transition: all 0.2s;
+    }
+    .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.06); }
+    .nav-cta {
+      padding: 7px 16px !important;
+      background: linear-gradient(135deg, #0d9488, #0f766e) !important;
+      color: #fff !important;
+      border-radius: 8px !important;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { opacity: 0.9; background: linear-gradient(135deg, #0d9488, #0f766e) !important; }
+
+    /* ── Hero ────────────────────────────────────────────────── */
+    .hero {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 72px 24px 48px;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      border-radius: 20px;
+      background: rgba(13,148,136,0.1);
+      border: 1px solid rgba(13,148,136,0.2);
+      color: #2dd4bf;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, #2dd4bf, #0d9488);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 17px;
+      color: rgba(255,255,255,0.55);
+      max-width: 580px;
+      margin: 0 auto 32px;
+      line-height: 1.65;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #0d9488, #0f766e);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(13,148,136,0.35); }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.7);
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.08); color: #fff; }
+
+    /* ── Stats Bar ───────────────────────────────────────────── */
+    .stats-bar {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.02);
+      padding: 16px 24px;
+      margin-bottom: 0;
+    }
+    .stats-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 28px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+    }
+    .stat-item:not(:last-child) {
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .stat-item strong { color: #2dd4bf; font-size: 15px; font-weight: 700; }
+
+    /* ── Main Layout ─────────────────────────────────────────── */
+    .main-layout {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 32px 24px 80px;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    /* ── Filter Sidebar ──────────────────────────────────────── */
+    .filter-sidebar {
+      position: sticky;
+      top: 74px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .filter-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: -8px;
+    }
+    .filter-group { display: flex; flex-direction: column; gap: 8px; }
+    .filter-group-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 2px;
+    }
+    .filter-group label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .filter-group label:hover { color: rgba(255,255,255,0.9); }
+    .filter-group input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 16px; height: 16px;
+      border: 2px solid rgba(255,255,255,0.15);
+      border-radius: 4px;
+      background: transparent;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all 0.15s;
+      position: relative;
+    }
+    .filter-group input[type="checkbox"]:checked {
+      background: #0d9488;
+      border-color: #0d9488;
+    }
+    .filter-group input[type="checkbox"]:checked::after {
+      content: '✓';
+      position: absolute;
+      top: -2px; left: 1px;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .filter-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+    }
+    .btn-clear {
+      width: 100%;
+      padding: 9px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.5);
+      font-size: 12px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-clear:hover { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.8); }
+
+    /* ── Feed Column ─────────────────────────────────────────── */
+    .feed-col { min-width: 0; }
+    .feed-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .search-wrap {
+      flex: 1;
+      min-width: 200px;
+      position: relative;
+    }
+    .search-wrap::before {
+      content: '🔍';
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 14px;
+      pointer-events: none;
+    }
+    #searchInput {
+      width: 100%;
+      padding: 10px 14px 10px 38px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      color: rgba(255,255,255,0.85);
+      font-size: 14px;
+      font-family: inherit;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    #searchInput::placeholder { color: rgba(255,255,255,0.3); }
+    #searchInput:focus { border-color: rgba(13,148,136,0.4); }
+
+    .feed-count {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      white-space: nowrap;
+    }
+
+    /* ── Bid Cards ───────────────────────────────────────────── */
+    #bidFeed { display: flex; flex-direction: column; gap: 12px; }
+
+    .bid-card {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px;
+      padding: 20px 22px;
+      transition: all 0.2s;
+      position: relative;
+    }
+    .bid-card:hover {
+      border-color: rgba(13,148,136,0.25);
+      background: rgba(255,255,255,0.04);
+      transform: translateY(-1px);
+    }
+    .bid-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+    .bid-card-header-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .bid-agency {
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .bid-status {
+      display: inline-block;
+      padding: 2px 9px;
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .bid-status-open { background: rgba(16,185,129,0.1); color: #10b981; border: 1px solid rgba(16,185,129,0.2); }
+    .bid-status-warning { background: rgba(245,158,11,0.1); color: #f59e0b; border: 1px solid rgba(245,158,11,0.2); }
+    .bid-status-urgent { background: rgba(239,68,68,0.1); color: #ef4444; border: 1px solid rgba(239,68,68,0.2); }
+    .bid-status-closed { background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.3); border: 1px solid rgba(255,255,255,0.08); }
+
+    .bid-save-btn {
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      color: rgba(255,255,255,0.2);
+      transition: color 0.2s, transform 0.15s;
+      padding: 0;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .bid-save-btn:hover { color: #f59e0b; transform: scale(1.2); }
+    .bid-save-btn.saved { color: #f59e0b; }
+
+    .bid-card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.35;
+      margin-bottom: 10px;
+      display: block;
+      transition: color 0.2s;
+    }
+    .bid-card-title:hover { color: #2dd4bf; }
+
+    .bid-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+    .bid-tag {
+      display: inline-block;
+      padding: 2px 9px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      background: rgba(13,148,136,0.08);
+      color: rgba(45,212,191,0.7);
+      border: 1px solid rgba(13,148,136,0.12);
+      text-transform: capitalize;
+    }
+
+    .bid-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 10px;
+    }
+    .meta-value { color: rgba(255,255,255,0.55); }
+    .meta-deadline {}
+    .deadline-warning { color: #f59e0b !important; }
+    .deadline-urgent { color: #ef4444 !important; animation: pulsed 2s infinite; }
+    .deadline-expired { color: rgba(255,255,255,0.25) !important; }
+
+    @keyframes pulsed {
+      0%,100%{ opacity:1; }
+      50%{ opacity:0.65; }
+    }
+
+    .bid-fitscore {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .fitscore-label {
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .fitscore-bar {
+      height: 4px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 2px;
+      flex: 1;
+      overflow: hidden;
+    }
+    .fitscore-fill {
+      height: 100%;
+      border-radius: 2px;
+      transition: width 0.4s ease;
+    }
+
+    /* ── Empty State ─────────────────────────────────────────── */
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+    }
+    .empty-icon { font-size: 40px; margin-bottom: 12px; }
+    .empty-state h3 { font-size: 16px; color: rgba(255,255,255,0.5); margin-bottom: 6px; }
+    .empty-state p { font-size: 13px; color: rgba(255,255,255,0.3); }
+
+    /* ── How It Works ────────────────────────────────────────── */
+    .features-section {
+      background: rgba(255,255,255,0.015);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 64px 24px;
+    }
+    .section-inner { max-width: 1280px; margin: 0 auto; }
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #2dd4bf;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin-bottom: 40px;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .feature-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px;
+      padding: 24px;
+      transition: border-color 0.2s;
+    }
+    .feature-card:hover { border-color: rgba(13,148,136,0.2); }
+    .feature-icon { font-size: 28px; margin-bottom: 14px; }
+    .feature-card h3 { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .feature-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+    /* ── Pricing ─────────────────────────────────────────────── */
+    .pricing-section {
+      padding: 64px 24px;
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      max-width: 860px;
+    }
+    .pricing-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      padding: 28px;
+    }
+    .pricing-card.featured {
+      border-color: rgba(13,148,136,0.35);
+      background: rgba(13,148,136,0.05);
+    }
+    .plan-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      background: rgba(13,148,136,0.15);
+      color: #2dd4bf;
+      margin-bottom: 12px;
+    }
+    .plan-name { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .plan-price { font-size: 32px; font-weight: 800; color: #fff; margin-bottom: 20px; letter-spacing: -0.03em; }
+    .plan-price span { font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.4); }
+    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .plan-features li { font-size: 13px; color: rgba(255,255,255,0.6); display: flex; align-items: center; gap: 8px; }
+    .plan-features li.off { color: rgba(255,255,255,0.25); }
+
+    /* ── Toast ───────────────────────────────────────────────── */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: inherit;
+      z-index: 9999;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      opacity: 0;
+      pointer-events: none;
+      background: #141824;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    }
+    .toast-show { transform: translateX(-50%) translateY(0); opacity: 1; }
+    .toast-success { border-color: rgba(16,185,129,0.35); }
+    .toast-info { border-color: rgba(13,148,136,0.35); }
+
+    /* ── Footer ──────────────────────────────────────────────── */
+    .site-footer {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 40px 24px;
+      color: rgba(255,255,255,0.35);
+      font-size: 13px;
+    }
+    .footer-inner { max-width: 1280px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 20px; margin-top: 16px; flex-wrap: wrap; }
+    .footer-links a { transition: color 0.2s; }
+    .footer-links a:hover { color: rgba(255,255,255,0.7); }
+    .footer-eco {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .footer-eco a {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 12px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 8px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+      transition: all 0.2s;
+    }
+    .footer-eco a:hover { color: rgba(255,255,255,0.8); border-color: rgba(255,255,255,0.14); }
+    .footer-eco a strong { color: rgba(255,255,255,0.7); }
+
+    /* ── Filter Toggle (Mobile) ──────────────────────────────── */
+    .filter-toggle-btn {
+      display: none;
+      width: 100%;
+      padding: 10px 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      color: rgba(255,255,255,0.7);
+      font-size: 13px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      margin-bottom: 12px;
+    }
+
+    /* ── Responsive ──────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .main-layout {
+        grid-template-columns: 1fr;
+      }
+      .filter-sidebar {
+        position: static;
+        display: none;
+      }
+      .filter-sidebar.open { display: flex; }
+      .filter-toggle-btn { display: block; }
+    }
+    @media (max-width: 640px) {
+      .hero { padding: 48px 16px 32px; }
+      .stat-item { padding: 0 16px; font-size: 12px; }
+      .main-layout { padding: 20px 16px 60px; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- ── Navigation ── -->
-  <nav class="navbar">
-    <a href="/" class="navbar-brand"><span class="brand-icon">📋</span> BuildBids</a>
-    <div class="navbar-links">
-      <a href="#feed">Browse Bids</a>
-      <a href="/dashboard.html">Dashboard</a>
-      <a href="/about.html">About</a>
-      <a href="#" id="authNavBtn" onclick="if(window.BuildAuth)BuildAuth.showModal()" style="background:var(--gradient);color:#fff;border-radius:6px;">Sign In</a>
+  <!-- Ecosystem Bar -->
+  <script src="build-ecosystem-bar.js" defer></script>
+
+  <!-- Nav -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <div class="nav-brand-icon">📋</div>
+        BuildBids
+      </a>
+      <div class="nav-links">
+        <a href="#feed">Browse Bids</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="about.html">About</a>
+        <a href="#" id="authNavBtn" class="nav-cta">Sign In</a>
+      </div>
     </div>
   </nav>
 
-  <!-- ── Hero ── -->
+  <!-- Hero -->
   <section class="hero">
-    <h1>Stop Missing <span>Government Contracts</span></h1>
-    <p>Curated government bids for small contractors — filtered by trade, location, and size. AI-powered summaries in plain English so you know exactly what you're bidding on.</p>
+    <div class="hero-eyebrow">📋 Government Contracts for Small Contractors</div>
+    <h1>Stop Missing<br><span>Government Contracts</span></h1>
+    <p class="hero-sub">Curated government bids filtered by trade, location, and size — with AI-powered plain-English summaries so you know exactly what you're bidding on.</p>
     <div class="hero-actions">
-      <a href="#feed" class="btn btn-primary">Browse Open Bids</a>
-      <a href="#pricing" class="btn btn-secondary">View Pricing</a>
+      <a href="#feed" class="btn-primary">Browse Open Bids →</a>
+      <a href="#pricing" class="btn-ghost">View Pricing</a>
     </div>
   </section>
 
-  <!-- ── Stats Bar ── -->
+  <!-- Stats Bar -->
   <div class="stats-bar">
-    <div class="stats-bar-inner">
-      <div class="stat-item"><strong>150+</strong>Active Bids</div>
-      <div class="stat-divider"></div>
-      <div class="stat-item"><strong>12</strong>States</div>
-      <div class="stat-divider"></div>
-      <div class="stat-item"><strong>Daily</strong>Updates</div>
-      <div class="stat-divider"></div>
-      <div class="stat-item"><strong>AI</strong>Powered Summaries</div>
+    <div class="stats-inner">
+      <div class="stat-item"><strong>25+</strong> Active Bids</div>
+      <div class="stat-item"><strong>8</strong> Trades</div>
+      <div class="stat-item"><strong>5</strong> States</div>
+      <div class="stat-item"><strong>AI</strong> Plain-English Summaries</div>
+      <div class="stat-item"><strong>Free</strong> to Browse</div>
     </div>
   </div>
 
-  <!-- ── Bid Feed ── -->
-  <section id="feed" style="padding-top:32px;">
-    <div class="section-header">
-      <h2>Open Bids</h2>
-      <p>Browse government contract opportunities curated for small contractors</p>
+  <!-- Main Feed Layout -->
+  <div class="main-layout" id="feed">
+
+    <!-- ── Filter Sidebar ── -->
+    <aside>
+      <button class="filter-toggle-btn" id="filterToggle">Filters ▼</button>
+      <div class="filter-sidebar" id="filterPanel">
+        <div class="filter-title">Filter Bids</div>
+
+        <div class="filter-group">
+          <div class="filter-group-label">Trade</div>
+          <label><input type="checkbox" name="trade" value="cleaning"> Cleaning / Janitorial</label>
+          <label><input type="checkbox" name="trade" value="electrical"> Electrical</label>
+          <label><input type="checkbox" name="trade" value="plumbing"> Plumbing</label>
+          <label><input type="checkbox" name="trade" value="hvac"> HVAC</label>
+          <label><input type="checkbox" name="trade" value="painting"> Painting</label>
+          <label><input type="checkbox" name="trade" value="general-construction"> General Construction</label>
+          <label><input type="checkbox" name="trade" value="landscaping"> Landscaping</label>
+          <label><input type="checkbox" name="trade" value="roofing"> Roofing</label>
+        </div>
+
+        <div class="filter-divider"></div>
+
+        <div class="filter-group">
+          <div class="filter-group-label">State</div>
+          <label><input type="checkbox" name="state" value="OR"> Oregon</label>
+          <label><input type="checkbox" name="state" value="WA"> Washington</label>
+          <label><input type="checkbox" name="state" value="CA"> California</label>
+          <label><input type="checkbox" name="state" value="TX"> Texas</label>
+          <label><input type="checkbox" name="state" value="FL"> Florida</label>
+        </div>
+
+        <div class="filter-divider"></div>
+
+        <div class="filter-group">
+          <div class="filter-group-label">Bid Size</div>
+          <label><input type="checkbox" name="size" value="25k-50k"> Under $50K</label>
+          <label><input type="checkbox" name="size" value="50k-100k"> $50K – $100K</label>
+          <label><input type="checkbox" name="size" value="100k-250k"> $100K – $250K</label>
+          <label><input type="checkbox" name="size" value="250k-500k"> $250K – $500K</label>
+          <label><input type="checkbox" name="size" value="500k-1m"> $500K – $1M</label>
+          <label><input type="checkbox" name="size" value="1m-plus"> $1M+</label>
+        </div>
+
+        <div class="filter-divider"></div>
+
+        <div class="filter-group">
+          <div class="filter-group-label">Status</div>
+          <label><input type="checkbox" name="status" value="open" checked> Open</label>
+          <label><input type="checkbox" name="status" value="closing-soon"> Closing Soon</label>
+        </div>
+
+        <button class="btn-clear" id="clearFilters">Clear All Filters</button>
+      </div>
+    </aside>
+
+    <!-- ── Feed Column ── -->
+    <div class="feed-col">
+      <div class="feed-header">
+        <div class="search-wrap">
+          <input type="text" id="searchInput" placeholder="Search by keyword, agency, or trade...">
+        </div>
+        <span class="feed-count" id="bidCount"></span>
+      </div>
+
+      <!-- Bid cards rendered by app.js -->
+      <div id="bidFeed">
+        <div class="empty-state">
+          <div class="empty-icon">⏳</div>
+          <h3>Loading bids...</h3>
+        </div>
+      </div>
     </div>
-    <div class="feed-layout">
-      <!-- Left: Filter sidebar -->
-      <aside class="filter-sidebar">
-        <div class="filter-section">
-          <h4>Trade</h4>
-          <label><input type="checkbox" value="general"> General</label>
-          <label><input type="checkbox" value="electrical"> Electrical</label>
-          <label><input type="checkbox" value="plumbing"> Plumbing</label>
-          <label><input type="checkbox" value="hvac"> HVAC</label>
-          <label><input type="checkbox" value="painting"> Painting</label>
-          <label><input type="checkbox" value="cleaning"> Cleaning / Janitorial</label>
-          <label><input type="checkbox" value="landscaping"> Landscaping</label>
-          <label><input type="checkbox" value="roofing"> Roofing</label>
+  </div>
+
+  <!-- How It Works -->
+  <section class="features-section">
+    <div class="section-inner">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">From Posting to Proposal in Minutes</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🔍</div>
+          <h3>Browse & Filter</h3>
+          <p>Filter government bids by your trade, state, and contract size. Find opportunities that match your skills and capacity.</p>
         </div>
-        <div class="filter-section">
-          <h4>State</h4>
-          <label><input type="checkbox" value="OR"> Oregon</label>
-          <label><input type="checkbox" value="WA"> Washington</label>
-          <label><input type="checkbox" value="CA"> California</label>
-          <label><input type="checkbox" value="TX"> Texas</label>
-          <label><input type="checkbox" value="FL"> Florida</label>
+        <div class="feature-card">
+          <div class="feature-icon">✨</div>
+          <h3>AI Summaries</h3>
+          <p>No more reading 80-page bid documents. Get plain-English summaries with key dates, requirements, and scope at a glance.</p>
         </div>
-        <div class="filter-section">
-          <h4>Bid Size</h4>
-          <label><input type="checkbox" value="under25k"> Under $25K</label>
-          <label><input type="checkbox" value="25k-100k"> $25K – $100K</label>
-          <label><input type="checkbox" value="100k-500k"> $100K – $500K</label>
-          <label><input type="checkbox" value="500k+"> $500K+</label>
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h3>Fit Score</h3>
+          <p>Each bid gets a fit score so you immediately know if it's worth pursuing. Focus your energy on bids you can win.</p>
         </div>
-        <div class="filter-section">
-          <h4>Status</h4>
-          <label><input type="checkbox" value="open" checked> Open</label>
-          <label><input type="checkbox" value="closing-soon"> Closing Soon</label>
-        </div>
-        <button class="btn btn-secondary btn-sm" style="width:100%;" onclick="clearFilters()">Clear Filters</button>
-      </aside>
-
-      <!-- Right: Bid cards -->
-      <div>
-        <div class="search-bar">
-          <input type="text" class="search-input" placeholder="Search bids by keyword, agency, or trade..." id="searchInput">
-          <button class="btn btn-primary btn-sm" onclick="searchBids()">Search</button>
-        </div>
-        <div id="bidFeed">
-          <!-- Sample Bid 1 -->
-          <div class="bid-card" data-category="general">
-            <div class="bid-agency">Oregon Dept. of Administrative Services</div>
-            <div class="bid-title">Building Renovation — Salem State Office Complex Phase 2</div>
-            <div class="bid-meta">
-              <span>📍 Salem, OR</span>
-              <span>💰 $75K – $120K</span>
-              <span class="bid-deadline soon">⏰ Due Jun 22, 2026</span>
-            </div>
-            <p style="font-size:13px;color:var(--text-secondary);margin-bottom:10px;line-height:1.6;">Interior renovation of the 3rd floor east wing. Includes demolition of existing partition walls, new drywall, ceiling grid replacement, flooring, painting, and ADA-compliant restroom upgrades. Performance bond required.</p>
-            <div class="bid-bottom">
-              <div class="bid-tags">
-                <span class="bid-tag">General</span>
-                <span class="bid-tag">Renovation</span>
-                <span class="bid-tag">ADA</span>
-              </div>
-              <div class="fit-score">
-                <span>Fit</span>
-                <div class="score-bar"><div class="score-fill high" style="width:85%;"></div></div>
-                <span>85%</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sample Bid 2 -->
-          <div class="bid-card" data-category="electrical">
-            <div class="bid-agency">City of Portland — Bureau of General Services</div>
-            <div class="bid-title">Electrical Panel Upgrades — Fire Station #7 & #14</div>
-            <div class="bid-meta">
-              <span>📍 Portland, OR</span>
-              <span>💰 $40K – $65K</span>
-              <span class="bid-deadline urgent">⏰ Due Jun 14, 2026</span>
-            </div>
-            <p style="font-size:13px;color:var(--text-secondary);margin-bottom:10px;line-height:1.6;">Replace aging 200-amp panels with 400-amp service at two fire stations. Includes new sub-panels, circuit mapping, and emergency generator transfer switch installation. Must hold C-10 electrical license.</p>
-            <div class="bid-bottom">
-              <div class="bid-tags">
-                <span class="bid-tag">Electrical</span>
-                <span class="bid-tag">Municipal</span>
-              </div>
-              <div class="fit-score">
-                <span>Fit</span>
-                <div class="score-bar"><div class="score-fill high" style="width:92%;"></div></div>
-                <span>92%</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sample Bid 3 -->
-          <div class="bid-card" data-category="cleaning">
-            <div class="bid-agency">Washington State Dept. of Enterprise Services</div>
-            <div class="bid-title">Janitorial Services — Olympia Capitol Campus (3-Year Contract)</div>
-            <div class="bid-meta">
-              <span>📍 Olympia, WA</span>
-              <span>💰 $200K – $350K</span>
-              <span class="bid-deadline">⏰ Due Jul 8, 2026</span>
-            </div>
-            <p style="font-size:13px;color:var(--text-secondary);margin-bottom:10px;line-height:1.6;">Daily cleaning of 4 buildings on the Capitol campus, ~180,000 sq ft total. Includes restroom sanitation, floor care, window cleaning, and green cleaning product requirements. MWBE preference applies.</p>
-            <div class="bid-bottom">
-              <div class="bid-tags">
-                <span class="bid-tag">Cleaning</span>
-                <span class="bid-tag">Multi-Year</span>
-                <span class="bid-tag">MWBE</span>
-              </div>
-              <div class="fit-score">
-                <span>Fit</span>
-                <div class="score-bar"><div class="score-fill medium" style="width:68%;"></div></div>
-                <span>68%</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sample Bid 4 -->
-          <div class="bid-card" data-category="hvac">
-            <div class="bid-agency">Multnomah County Facilities Division</div>
-            <div class="bid-title">HVAC Replacement — Multnomah County Library (Midland Branch)</div>
-            <div class="bid-meta">
-              <span>📍 Portland, OR</span>
-              <span>💰 $90K – $140K</span>
-              <span class="bid-deadline soon">⏰ Due Jun 28, 2026</span>
-            </div>
-            <p style="font-size:13px;color:var(--text-secondary);margin-bottom:10px;line-height:1.6;">Remove and replace 2 rooftop units (15-ton each), install new ductwork and thermostats. Prevailing wage applies. Pre-bid walkthrough required Jun 16 at 10 AM.</p>
-            <div class="bid-bottom">
-              <div class="bid-tags">
-                <span class="bid-tag">HVAC</span>
-                <span class="bid-tag">Prevailing Wage</span>
-              </div>
-              <div class="fit-score">
-                <span>Fit</span>
-                <div class="score-bar"><div class="score-fill medium" style="width:74%;"></div></div>
-                <span>74%</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sample Bid 5 -->
-          <div class="bid-card" data-category="landscaping">
-            <div class="bid-agency">Texas General Land Office</div>
-            <div class="bid-title">Grounds Maintenance & Irrigation Repair — Austin Regional Office</div>
-            <div class="bid-meta">
-              <span>📍 Austin, TX</span>
-              <span>💰 $15K – $28K</span>
-              <span class="bid-deadline">⏰ Due Jul 15, 2026</span>
-            </div>
-            <p style="font-size:13px;color:var(--text-secondary);margin-bottom:10px;line-height:1.6;">Bi-weekly mowing, trimming, mulching, and seasonal planting on 2.5-acre campus. Includes repair of existing irrigation system (8 zones). HUB-certified firms encouraged.</p>
-            <div class="bid-bottom">
-              <div class="bid-tags">
-                <span class="bid-tag">Landscaping</span>
-                <span class="bid-tag">Irrigation</span>
-                <span class="bid-tag">HUB</span>
-              </div>
-              <div class="fit-score">
-                <span>Fit</span>
-                <div class="score-bar"><div class="score-fill high" style="width:88%;"></div></div>
-                <span>88%</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sample Bid 6 -->
-          <div class="bid-card" data-category="roofing">
-            <div class="bid-agency">Florida Dept. of Management Services</div>
-            <div class="bid-title">Roof Replacement — Tallahassee Regional Service Center</div>
-            <div class="bid-meta">
-              <span>📍 Tallahassee, FL</span>
-              <span>💰 $180K – $260K</span>
-              <span class="bid-deadline">⏰ Due Jul 20, 2026</span>
-            </div>
-            <p style="font-size:13px;color:var(--text-secondary);margin-bottom:10px;line-height:1.6;">Full tear-off and replacement of ~22,000 sq ft flat roof with TPO membrane system. Includes new insulation, flashing, and drainage modifications. Florida-licensed roofing contractor required.</p>
-            <div class="bid-bottom">
-              <div class="bid-tags">
-                <span class="bid-tag">Roofing</span>
-                <span class="bid-tag">Commercial</span>
-              </div>
-              <div class="fit-score">
-                <span>Fit</span>
-                <div class="score-bar"><div class="score-fill low" style="width:45%;"></div></div>
-                <span>45%</span>
-              </div>
-            </div>
-          </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Track & Win</h3>
+          <p>Save bids, mark applications, track deadlines, and record outcomes. Build your government contracting track record.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── How It Works ── -->
-  <section class="features">
-    <h2>How It Works</h2>
-    <div class="feature-grid">
-      <div class="feature-card">
-        <div class="feature-icon">🔍</div>
-        <h3>Browse</h3>
-        <p>Filter by trade, state, and size. Find bids that match your skills.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📝</div>
-        <h3>Understand</h3>
-        <p>AI-generated plain English summaries. Key dates, requirements, and scope at a glance.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🎯</div>
-        <h3>Win</h3>
-        <p>Track your applications, set deadline alerts, and submit with confidence.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Pricing ── -->
-  <section class="pricing" id="pricing">
-    <h2>Simple Pricing</h2>
-    <p>Start free. Upgrade when you're winning contracts.</p>
-    <div class="pricing-grid">
-      <!-- Free tier -->
-      <div class="pricing-card">
-        <div class="plan-name">Free</div>
-        <div class="plan-price">$0</div>
-        <ul>
-          <li>✓ Browse all open bids</li>
-          <li>✓ 3 AI summaries per day</li>
-          <li>✓ Basic search & filters</li>
-          <li class="disabled">✗ Email digest</li>
-          <li class="disabled">✗ Saved searches</li>
-          <li class="disabled">✗ Original bid PDFs</li>
-        </ul>
-      </div>
-      <!-- Starter tier -->
-      <div class="pricing-card featured">
-        <div class="plan-name">Starter</div>
-        <div class="plan-price">$29<span>/mo</span></div>
-        <ul>
-          <li>✓ Unlimited AI summaries</li>
-          <li>✓ Daily email digest</li>
-          <li>✓ 3 saved searches</li>
-          <li>✓ Bid deadline alerts</li>
-          <li class="disabled">✗ Original bid PDFs</li>
-          <li class="disabled">✗ Pre-qual checklists</li>
-        </ul>
-      </div>
-      <!-- Pro tier -->
-      <div class="pricing-card">
-        <div class="plan-name">Pro</div>
-        <div class="plan-price">$49<span>/mo</span></div>
-        <ul>
-          <li>✓ Everything in Starter</li>
-          <li>✓ Original bid PDFs</li>
-          <li>✓ Pre-qual checklists</li>
-          <li>✓ Bid tracker dashboard</li>
-          <li>✓ Unlimited saved searches</li>
-          <li>✓ Priority new-bid alerts</li>
-        </ul>
+  <!-- Pricing -->
+  <section class="pricing-section" id="pricing">
+    <div class="section-inner">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">Start Free. Upgrade When You're Ready.</h2>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="plan-name">Free</div>
+          <div class="plan-price">$0</div>
+          <ul class="plan-features">
+            <li>✓ Browse all open bids</li>
+            <li>✓ AI summaries for every bid</li>
+            <li>✓ Filter by trade, state & size</li>
+            <li>✓ Save & track bids</li>
+            <li class="off">✗ Email digest</li>
+            <li class="off">✗ Saved search alerts</li>
+          </ul>
+        </div>
+        <div class="pricing-card featured">
+          <div class="plan-badge">Most Popular</div>
+          <div class="plan-name">Starter</div>
+          <div class="plan-price">$29<span>/mo</span></div>
+          <ul class="plan-features">
+            <li>✓ Everything in Free</li>
+            <li>✓ Daily email digest</li>
+            <li>✓ 3 saved search alerts</li>
+            <li>✓ Deadline notifications</li>
+            <li class="off">✗ Original bid PDFs</li>
+            <li class="off">✗ Pre-qual checklists</li>
+          </ul>
+        </div>
+        <div class="pricing-card">
+          <div class="plan-name">Pro</div>
+          <div class="plan-price">$49<span>/mo</span></div>
+          <ul class="plan-features">
+            <li>✓ Everything in Starter</li>
+            <li>✓ Original bid PDF downloads</li>
+            <li>✓ Pre-qualification checklists</li>
+            <li>✓ Unlimited saved searches</li>
+            <li>✓ Priority new-bid alerts</li>
+            <li>✓ Bid win/loss analytics</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ── Footer ── -->
+  <!-- Footer -->
   <footer class="site-footer">
-    <div style="max-width:860px;margin:0 auto 1.25rem;padding:0 1.5rem;">
-      <p style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:0.6rem;">Also from the Build ecosystem</p>
-      <div style="display:flex;flex-wrap:wrap;gap:0.75rem;">
-        <a href="https://buildinvoice.co" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.35rem 0.85rem;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:6px;font-size:0.8rem;color:var(--text-secondary);text-decoration:none;">⚡ <strong style="color:var(--text-primary);">BuildInvoice</strong> — Free invoice generator</a>
-        <a href="https://buildcertificates.com" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.35rem 0.85rem;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:6px;font-size:0.8rem;color:var(--text-secondary);text-decoration:none;">🏅 <strong style="color:var(--text-primary);">BuildCertificates</strong> — Free certificate generator</a>
-        <a href="https://buildpdf.co" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.35rem 0.85rem;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:6px;font-size:0.8rem;color:var(--text-secondary);text-decoration:none;">📄 <strong style="color:var(--text-primary);">BuildPDF</strong> — Free file-to-PDF converter</a>
-        <a href="https://buildquotes.co" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.35rem 0.85rem;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:6px;font-size:0.8rem;color:var(--text-secondary);text-decoration:none;">💼 <strong style="color:var(--text-primary);">BuildQuotes</strong> — Free price quote generator</a>
-        <a href="https://buildtimesheet.co" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.35rem 0.85rem;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:6px;font-size:0.8rem;color:var(--text-secondary);text-decoration:none;">⏰ <strong style="color:var(--text-primary);">BuildTimesheet</strong> — Free timesheet generator</a>
-        <a href="https://buildstatus.co" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.35rem 0.85rem;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:6px;font-size:0.8rem;color:var(--text-secondary);text-decoration:none;">📊 <strong style="color:var(--text-primary);">BuildStatus</strong> — Project status pages</a>
+    <div class="footer-inner">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#2dd4bf;margin-bottom:10px;">Also from the Build Ecosystem</div>
+      <div class="footer-eco">
+        <a href="https://buildinvoice.co" target="_blank" rel="noopener">⚡ <strong>BuildInvoice</strong> — Free invoices</a>
+        <a href="https://buildquotes.co" target="_blank" rel="noopener">💼 <strong>BuildQuotes</strong> — Free quotes</a>
+        <a href="https://buildcertificates.com" target="_blank" rel="noopener">🏅 <strong>BuildCertificates</strong> — Certificates</a>
+        <a href="https://buildpdf.co" target="_blank" rel="noopener">📄 <strong>BuildPDF</strong> — File converter</a>
+        <a href="https://buildtimesheet.co" target="_blank" rel="noopener">⏰ <strong>BuildTimesheet</strong> — Timesheets</a>
+        <a href="https://buildstatus.co" target="_blank" rel="noopener">📊 <strong>BuildStatus</strong> — Status pages</a>
       </div>
+      <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+      <div style="margin-top:16px;">© 2026 BuildBids. All rights reserved.</div>
     </div>
-    <div class="footer-links">
-      <a href="/about.html">About</a>
-      <a href="/privacy.html">Privacy</a>
-      <a href="/terms.html">Terms</a>
-    </div>
-    <p>© 2026 BuildBids</p>
   </footer>
 
-  <!-- ── Toast ── -->
+  <!-- Toast -->
   <div id="toast" class="toast"></div>
 
+  <!-- Scripts -->
+  <script src="app.js" defer></script>
+  <script src="build-ecosystem-auth.js" defer></script>
+
+  <script>
+    // Auth nav button wiring
+    document.getElementById('authNavBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+      if (window.BuildAuth) BuildAuth.showModal();
+    });
+  </script>
 </body>
 </html>
